@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#584FDB</color>
+    <color name="accent">#5B4FE8</color>
+    <color name="accent_soft">#EEEDFC</color>
+    <color name="accent_pressed">#4A3FD0</color>
+    <color name="bg_page">#F2F2F7</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="text_primary">#1C1C1E</color>
+    <color name="text_secondary">#8E8E93</color>
+    <color name="text_tertiary">#AEAEB2</color>
+    <color name="separator">#E5E5EA</color>
+    <color name="success">#34C759</color>
+    <color name="danger">#FF3B30</color>
+    <color name="cta_text">#FFFFFF</color>
+    <color name="chip_bg">#E8E6FA</color>
+    <color name="chip_text">#5B4FE8</color>
+</resources>
