@@ -6,6 +6,12 @@ Android app that downloads videos and images from X (Twitter), Douyin, and Xiaoh
 - Session list with open-in-system-viewer
 - Chinese / English UI (follows system until you toggle)
 
+## 网页版 / Web
+
+iPhone 与浏览器版：<https://iamyakumo.github.io/x-media-downloader/>
+
+用 Safari 打开后，通过「分享 → 添加到主屏幕」即可装到桌面。
+
 ## Build
 
 Requires JDK 17+, Android SDK (compileSdk 34).
