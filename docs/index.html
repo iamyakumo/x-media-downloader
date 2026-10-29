@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>媒体下载</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="媒体下载">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="no-referrer">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAwFBMVEX////9/f/C2/Ucmu8cme8cmO4cl+4blu0ble0blOwakusakesakOocjOcZjukZjegZi+cYiucYieYYiOYYh+UXhuUXheQXg+MVguMWgeIWgOEVfuAVfeAVfN8JfeIYddsUet4Ued4Ud90TdtwTc9sSctoSb9kRbdcRbNcPbNcQadUQaNUPZtQPZdMFZtYPY9IOY9IOYdENX9ANXM4LW84MWc0MWMwLV8wLVssLVcsLVMoCVs0KU8kKUcgKUMgBU8vW7eetAAAETElEQVR42u3a63bjNBSGYVkhwACGTs/ttPF04lNcx2kOHA3k/u9qpLSEgSoeW/q2yF7o/d16P0vLtXeyKkYMEwHtC/0Fw3iixwzjif6SYQHtDf0Vw3iiv2ZYQHtDv2FYQAd0F/obhgW0N/S3DOOJ/o5hAe0N/T3DAjqgu9A/MCygA9o7Ov47EvQJvvh0su8iJhhAgI4nb0byr8YTCvRbdPFkFIl9kbx+e4IeIQjMirpPCHl99OiTi3hH3Z90JEaTGI0+xRZPpPjErNVyEoOH0KP1/YFGn2Ezok/BQwLaG/ocmxF9Bh7CE32B7cyAnpyDhwS06twL+hKbGQ0eEtCH0Jdo9BU2Mxo8xAv6KqDx6Esv6GtsV0Y0eIi4wWZGg4cEdEB3oW+xGdE34CEBfQh9G9AK/Q7bjRENHoJG3wb0IfQdNiP6HXgIT/Q9NiP6DjwkoLmi7xoD+h6Nfo/NjAYPQaPvDegsoDX6AZsR/R48JKC9oT9gM6IfwEMCWvVgQM8+BLRCT7GZ0eAhdmjcSftDZ4ebGtBN5y94Qqe3V4e/Qpi+RiddXzmkntBZHHUl/lXnD49sbniRDi9p4lcyy0bN1AJgg1bqkeh90B1HrW73JPWFflE7nrJ+rkxTf2iEWp+z3fBUZHbt1K7mLLUbbotWaumi1veGrdkenaUuav30zm3NDugss1dr88za7IS2Vu/MSfbfoPOZlToSUdw4mDORO5TNEgv1s9llrhM6Ty3U7mZHtIVavb1dza7oPG2SaIhavUbHrmZndJHplS8aYB41ae6KLlwbot6Zc+eR7ugibeKo5/KkzVlxDOgiacb9Vj69JOXFcaCLvN+iqs2IcRB02U/9bC4R6BJS/vn1WpvLAjINhFbqz7xktHmGMcPQZdmt1otdVcxA6Bmoctal1uamQM0SFaqyOqx+NsNG4dAdavXGRJqR6KqszSvfbhkFmqHoqmxyg3pnLqtjRRvVuwUaaq7EI7Ty1XqtF+i2xE4Bo5X6n4uqXkbRZji6LttP1STmR1Gj0+r98rQzw0fg0Uq9X6/VS6Wtag7oumpfFlW9JD3WPND147NanzPF5Wsxp+hFLdt5TXF5GrRSSyHk6onETIWe1xspKyIzGXr+NC9XROa5WBA1XzzNqa5NhqZMPDGMJ3rJsP8HmuIPixatrr+iaKB7EHqxaVclQYt2M0gthpxHW0oZESRl0i4GQMQQM+wfal5/NTLeLijQy1Z/0KZKfWRfkqCloDvpKEo2ePSyjenMu09m2yUevZXE6JYluv/tse7ZcjsmRUfq9uhr6Y1eqYcH6UnHBOj1ivL+UHfHun/90evNQpI9p0WUtCsC9GbdKjVRMtmuNv3Rm/6tN9tYkhSv29UAyBC0OootUepAhqB/HNSaqGGKgejjKKADugv9E8N4on9mGE/0LwwLaG/oXxnGE/0bwwLaG/p3hgV0QHeh/2BYQHtD/8kwluiPa3lLRKJhfvMAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAwFBMVEX////9/f/C2/Ucmu8cme8cmO4cl+4blu0ble0blOwakusakesakOocjOcZjukZjegZi+cYiucYieYYiOYYh+UXhuUXheQXg+MVguMWgeIWgOEVfuAVfeAVfN8JfeIYddsUet4Ued4Ud90TdtwTc9sSctoSb9kRbdcRbNcPbNcQadUQaNUPZtQPZdMFZtYPY9IOY9IOYdENX9ANXM4LW84MWc0MWMwLV8wLVssLVcsLVMoCVs0KU8kKUcgKUMgBU8vW7eetAAAETElEQVR42u3a63bjNBSGYVkhwACGTs/ttPF04lNcx2kOHA3k/u9qpLSEgSoeW/q2yF7o/d16P0vLtXeyKkYMEwHtC/0Fw3iixwzjif6SYQHtDf0Vw3iiv2ZYQHtDv2FYQAd0F/obhgW0N/S3DOOJ/o5hAe0N/T3DAjqgu9A/MCygA9o7Ov47EvQJvvh0su8iJhhAgI4nb0byr8YTCvRbdPFkFIl9kbx+e4IeIQjMirpPCHl99OiTi3hH3Z90JEaTGI0+xRZPpPjErNVyEoOH0KP1/YFGn2Ezok/BQwLaG/ocmxF9Bh7CE32B7cyAnpyDhwS06twL+hKbGQ0eEtCH0Jdo9BU2Mxo8xAv6KqDx6Esv6GtsV0Y0eIi4wWZGg4cEdEB3oW+xGdE34CEBfQh9G9AK/Q7bjRENHoJG3wb0IfQdNiP6HXgIT/Q9NiP6DjwkoLmi7xoD+h6Nfo/NjAYPQaPvDegsoDX6AZsR/R48JKC9oT9gM6IfwEMCWvVgQM8+BLRCT7GZ0eAhdmjcSftDZ4ebGtBN5y94Qqe3V4e/Qpi+RiddXzmkntBZHHUl/lXnD49sbniRDi9p4lcyy0bN1AJgg1bqkeh90B1HrW73JPWFflE7nrJ+rkxTf2iEWp+z3fBUZHbt1K7mLLUbbotWaumi1veGrdkenaUuav30zm3NDugss1dr88za7IS2Vu/MSfbfoPOZlToSUdw4mDORO5TNEgv1s9llrhM6Ty3U7mZHtIVavb1dza7oPG2SaIhavUbHrmZndJHplS8aYB41ae6KLlwbot6Zc+eR7ugibeKo5/KkzVlxDOgiacb9Vj69JOXFcaCLvN+iqs2IcRB02U/9bC4R6BJS/vn1WpvLAjINhFbqz7xktHmGMcPQZdmt1otdVcxA6Bmoctal1uamQM0SFaqyOqx+NsNG4dAdavXGRJqR6KqszSvfbhkFmqHoqmxyg3pnLqtjRRvVuwUaaq7EI7Ty1XqtF+i2xE4Bo5X6n4uqXkbRZji6LttP1STmR1Gj0+r98rQzw0fg0Uq9X6/VS6Wtag7oumpfFlW9JD3WPND147NanzPF5Wsxp+hFLdt5TXF5GrRSSyHk6onETIWe1xspKyIzGXr+NC9XROa5WBA1XzzNqa5NhqZMPDGMJ3rJsP8HmuIPixatrr+iaKB7EHqxaVclQYt2M0gthpxHW0oZESRl0i4GQMQQM+wfal5/NTLeLijQy1Z/0KZKfWRfkqCloDvpKEo2ePSyjenMu09m2yUevZXE6JYluv/tse7ZcjsmRUfq9uhr6Y1eqYcH6UnHBOj1ivL+UHfHun/90evNQpI9p0WUtCsC9GbdKjVRMtmuNv3Rm/6tN9tYkhSv29UAyBC0OootUepAhqB/HNSaqGGKgejjKKADugv9E8N4on9mGE/0LwwLaG/oXxnGE/0bwwLaG/p3hgV0QHeh/2BYQHtD/8kwluiPa3lLRKJhfvMAAAAASUVORK5CYII=">
+<style>
+:root{
+  --bg:#f5f6f8;--card:#fff;--fg:#16181c;--muted:#6b7280;--line:#e5e7eb;
+  --accent:#1d9bf0;--accent-fg:#fff;--err:#d93025;--ok:#188038;--input:#fff;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111214;--card:#1c1d21;--fg:#eceff3;--muted:#9aa0a8;--line:#2c2e33;
+    --accent:#1d9bf0;--err:#ff6b6b;--ok:#5bd17a;--input:#25272c;}
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:16px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+  padding:calc(env(safe-area-inset-top) + 14px) calc(env(safe-area-inset-right) + 14px)
+  calc(env(safe-area-inset-bottom) + 28px) calc(env(safe-area-inset-left) + 14px)}
+main{max-width:640px;margin:0 auto}
+h1{font-size:26px;margin:4px 2px 2px;letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px;margin:0 2px 14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
+textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line);border-radius:12px;
+  padding:10px 12px;font-size:16px;line-height:1.45;font-family:inherit;background:var(--input);color:var(--fg);outline:none}
+textarea:focus{border-color:var(--accent)}
+.row{display:flex;gap:8px;margin-top:10px}
+button,.btn{appearance:none;border:0;border-radius:12px;padding:12px 14px;font-weight:600;font-size:16px;line-height:1;font-family:inherit;
+  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px}
+.primary{background:var(--accent);color:var(--accent-fg);flex:1}
+.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+button:disabled{opacity:.55}
+#status{margin:12px 2px 0;font-size:14px;color:var(--muted);white-space:pre-wrap;word-break:break-word}
+#status.err{color:var(--err)}#status.ok{color:var(--ok)}
+.meta{margin-top:14px}
+.meta .author{font-weight:700}
+.meta .src{color:var(--muted);font-size:12px;margin-left:6px;font-weight:400}
+.meta .text{margin-top:4px;white-space:pre-wrap;word-break:break-word;font-size:15px}
+.card{margin-top:12px;padding:10px}
+.preview{width:100%;border-radius:10px;background:#000;display:block;max-height:70vh;object-fit:contain}
+.info{color:var(--muted);font-size:13px;margin:8px 2px 0;display:flex;gap:10px;flex-wrap:wrap}
+.card .row button,.card .row .btn{flex:1}
+.save{background:var(--accent);color:#fff}
+.hint{font-size:13px;color:var(--muted);margin:8px 2px 0}
+details{margin-top:18px}
+summary{font-weight:600;cursor:pointer;padding:4px 2px}
+.tips{font-size:14px;color:var(--muted);padding:0 4px}
+.tips li{margin:4px 0}
+.badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin-right:4px}
+#log{font:12px/1.4 ui-monospace,Menlo,monospace;color:var(--muted);white-space:pre-wrap;word-break:break-all;margin:6px 2px 0}
+</style>
+</head>
+<body>
+<main>
+  <h1>媒体下载</h1>
+  <p class="sub">支持 <span class="badge">X / Twitter</span><span class="badge">微信视频号</span><span class="badge">抖音</span><span class="badge">小红书</span></p>
+  <div class="box">
+    <textarea id="inp" placeholder="粘贴推文链接或分享文案，例如&#10;https://x.com/user/status/123…&#10;https://weixin.qq.com/sph/…" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea>
+    <div class="row">
+      <button class="ghost" id="pasteBtn" type="button">粘贴</button>
+      <button class="ghost" id="clearBtn" type="button">清空</button>
+      <button class="primary" id="goBtn" type="button">解析</button>
+    </div>
+  </div>
+  <div id="status"></div>
+  <div id="result"></div>
+
+  <details>
+    <summary>使用说明</summary>
+    <ul class="tips">
+      <li><b>装到桌面：</b>用 Safari 打开本页 → 点底部「分享」→「添加到主屏幕」，之后像 App 一样打开。</li>
+      <li><b>存到相册：</b>点「保存」，弹出分享面板后选「存储视频」或「存储图像」。如果第一次点没弹面板，按钮会变成「再点一次保存」，再点即可。</li>
+      <li><b>保存失败时：</b>点「打开原文件」，视频点播放器的分享按钮选「存储视频」；图片长按选「存储到照片」。</li>
+      <li><b>X 链接：</b>支持 x.com、twitter.com、fxtwitter、vxtwitter、mobile.twitter.com、i/web/status 链接，或直接粘贴推文数字 ID。t.co 短链网页无法展开，请在 X 里用「复制链接」。</li>
+      <li><b>视频号 / 抖音 / 小红书：</b>依赖第三方聚合接口，可能偶尔失败；仅登录可见或私密内容无法解析；下载地址有时效，过期请重新解析。</li>
+      <li><b>不支持：</b>微博（接口不允许网页调用）、YouTube（无可用的免费接口）。</li>
+    </ul>
+  </details>
+  <details id="logBox">
+    <summary>解析日志</summary>
+    <div id="log"></div>
+  </details>
+</main>
+
+<script id="core">
+"use strict";
+// ======== 解析核心（移植自 MediaExtractor.kt）========
+const Core = (() => {
+  const TWITTER_HOST = "(?:[\\w-]+\\.)*(?:twitter|x|fxtwitter|vxtwitter|fixupx|fixvx|twittpr|nitter|xcancel)\\.(?:com|net)";
+  const TWITTER_STATUS = new RegExp("https?://" + TWITTER_HOST + "/(?:[^\\s/?#]+/)*status(?:es)?/(\\d{5,25})", "i");
+  const TWITTER_NOSCHEME = new RegExp("(?:^|\\s)" + TWITTER_HOST + "/(?:[^\\s/?#]+/)*status(?:es)?/(\\d{5,25})", "i");
+  const TWITTER_ID_ONLY = /^\d{5,25}$/;
+  const TCO = /https?:\/\/t\.co\/[A-Za-z0-9]+/i;
+  const DOUYIN_URL = /https?:\/\/(?:[\w-]+\.)*(?:douyin\.com|iesdouyin\.com|amemv\.com)\/[^\s]*/i;
+  const XHS_URL = /https?:\/\/(?:[\w-]+\.)*(?:xiaohongshu\.com|xhslink\.com|xhslink\.cn|xhslink\.net|rednote\.com)\/[^\s]*/i;
+  const XHS_ID_ONLY = /^[0-9a-f]{24}$/i;
+  const WEIBO_URL = /https?:\/\/(?:[\w-]+\.)*(?:weibo\.com|weibo\.cn)\/[^\s]*/i;
+  const TCN = /https?:\/\/t\.cn\/[A-Za-z0-9]+/i;
+  const CHANNELS_URL = /https?:\/\/(?:(?:[\w-]+\.)*weixin\.qq\.com\/sph\/|channels\.weixin\.qq\.com\/)[^\s]*/i;
+  const CHANNELS_SPH = /weixin\.qq\.com\/sph\/([A-Za-z0-9_-]+)/i;
+  const YOUTUBE = /(?:youtube\.com|youtu\.be|youtube-nocookie\.com)/i;
+  const TRAIL = /[。，、）)\]】>》"'”’,.!！?？]+$/;
+
+  class ExtractError extends Error {}
+
+  function detectPlatform(input) {
+    const t = input.trim();
+    if (YOUTUBE.test(t)) return "youtube";
+    if (DOUYIN_URL.test(t) || /v\.douyin\.com/i.test(t)) return "douyin";
+    if (XHS_URL.test(t) || XHS_ID_ONLY.test(t)) return "xiaohongshu";
+    if (CHANNELS_URL.test(t) || CHANNELS_SPH.test(t) || /channels\.weixin\.qq\.com/i.test(t) || t.includes("视频号")) return "channels";
+    if (WEIBO_URL.test(t) || TCN.test(t) || t.includes("微博")) return "weibo";
+    if (TWITTER_STATUS.test(t) || TWITTER_NOSCHEME.test(t) || TWITTER_ID_ONLY.test(t) || TCO.test(t)) return "twitter";
+    if (/douyin/i.test(t) || t.includes("抖音")) return "douyin";
+    if (/xiaohongshu|xhslink|rednote/i.test(t) || t.includes("小红书")) return "xiaohongshu";
+    if (/weibo/i.test(t)) return "weibo";
+    return "unknown";
+  }
+
+  function parseTweetId(input) {
+    const text = String(input || "").trim();
+    if (TWITTER_ID_ONLY.test(text)) return text;
+    let m = text.match(TWITTER_STATUS); if (m) return m[1];
+    m = text.match(TWITTER_NOSCHEME); if (m) return m[1];
+    return null;
+  }
+
+  const preferHttps = u => /^http:\/\//i.test(u) ? "https://" + u.slice(7) : u;
+
+  /** pbs.twimg.com 图片改成原图 */
+  function origPhoto(u) {
+    try {
+      const url = new URL(u);
+      if (!/pbs\.twimg\.com$/i.test(url.hostname) || !url.pathname.startsWith("/media/")) return u;
+      const m = url.pathname.match(/^(\/media\/[^.\/]+)\.(\w+)$/);
+      if (m && !url.searchParams.get("format")) {
+        url.pathname = m[1];
+        url.searchParams.set("format", m[2]);
+      }
+      url.searchParams.set("name", "orig");
+      return url.toString();
+    } catch { return u; }
+  }
+
+  function bestVariant(arr) {
+    if (!Array.isArray(arr)) return null;
+    let best = null;
+    for (const o of arr) {
+      if (!o) continue;
+      const url = o.url || "", ct = o.content_type || o.container || "";
+      if (ct !== "video/mp4" && ct !== "mp4" && !url.includes(".mp4")) continue;
+      const br = Number(o.bitrate ?? o.bit_rate ?? 0) || 0;
+      if (!best || br > best.br) best = { url, br };
+    }
+    return best;
+  }
+
+  function fxMedia(tweet) {
+    const media = tweet && tweet.media; if (!media) return [];
+    const out = [];
+    for (const v of media.videos || []) {
+      const type = v.type === "gif" ? "gif" : "video";
+      const best = bestVariant(v.variants) || bestVariant(v.formats);
+      const url = (best && best.url) || v.url;
+      if (!url) continue;
+      out.push({ url, type, bitrate: best ? best.br : 0, width: v.width || 0, height: v.height || 0,
+        ext: "mp4", cover: v.thumbnail_url || "", duration: v.duration || 0 });
+    }
+    for (const p of media.photos || media.images || []) {
+      const url = p.url || p.media_url_https;
+      if (url) out.push({ url: origPhoto(url), type: "image", width: p.width || 0, height: p.height || 0 });
+    }
+    return out;
+  }
+
+  function parseFxTwitter(json) {
+    if (!json || (json.code ?? 200) !== 200 || !json.tweet) return null;
+    const t = json.tweet;
+    let media = fxMedia(t), fromQuote = false;
+    if (!media.length && t.quote) { media = fxMedia(t.quote); fromQuote = media.length > 0; }
+    return { platform: "twitter", id: t.id || "", author: (t.author && t.author.screen_name) || "",
+      authorName: (t.author && t.author.name) || "", text: t.text || "", media, source: "fxtwitter", fromQuote };
+  }
+
+  function parseVxTwitter(json) {
+    if (!json) return null;
+    const out = [];
+    const pushFrom = root => {
+      if (Array.isArray(root.media_extended)) {
+        for (const m of root.media_extended) {
+          if (!m) continue;
+          if (m.type === "video" || m.type === "gif") {
+            out.push({ url: m.url, type: m.type, bitrate: 0, width: (m.size && m.size.width) || 0,
+              height: (m.size && m.size.height) || 0, ext: "mp4", cover: m.thumbnail_url || "",
+              duration: m.duration_millis ? m.duration_millis / 1000 : 0 });
+          } else if (m.type === "image" || m.type === "photo") {
+            out.push({ url: origPhoto(m.url), type: "image", width: (m.size && m.size.width) || 0, height: (m.size && m.size.height) || 0 });
+          }
+        }
+      } else if (Array.isArray(root.mediaURLs)) {
+        for (const u of root.mediaURLs) {
+          if (/video\.twimg\.com/.test(u)) out.push({ url: u, type: u.includes("tweet_video") ? "gif" : "video", ext: "mp4" });
+          else if (/pbs\.twimg\.com|media/.test(u)) out.push({ url: origPhoto(u), type: "image" });
+        }
+      }
+    };
+    pushFrom(json);
+    let fromQuote = false;
+    if (!out.length && json.qrt) { pushFrom(json.qrt); fromQuote = out.length > 0; }
+    if (!json.tweetID && !out.length) return null;
+    return { platform: "twitter", id: json.tweetID || "", author: json.user_screen_name || "",
+      authorName: json.user_name || "", text: json.text || "", media: out, source: "vxtwitter", fromQuote };
+  }
+
+  function describeApiFailure(root, source) {
+    if (!root || typeof root !== "object") return null;
+    const code = root.code !== undefined ? String(root.code) : "";
+    const msg = root.msg || root.message || root.error || "";
+    if ((code === "200" || code === "0") || (!code && root.data && !msg)) return null;
+    if (!code && !msg) return null;
+    let reason = msg || "未知原因";
+    if (/不可访问|需要登录/.test(msg)) reason = "作品不可访问或需要登录";
+    else if (/频率|封禁/.test(msg)) reason = "解析服务请求过频或 IP 被限制";
+    else if (/请求目标接口失败/.test(msg)) reason = "解析服务暂时无法获取该内容";
+    return `解析失败（${code ? "服务返回 " + code : "服务失败"}，${source}）：${reason}`;
+  }
+
+  /** 解析 hk0 / juhev 一类聚合 JSON */
+  function parseHk0Style(root, platform, source) {
+    if (!root || typeof root !== "object") return null;
+    if (root.error && !root.data) return null;
+    const code = root.code === undefined ? -999 : Number(root.code);
+    if (code !== -999 && code !== 200 && code !== 0) return null;
+    const data = root.data; if (!data || typeof data !== "object") return null;
+    const out = [];
+    for (const im of data.images || []) {
+      const u = typeof im === "string" ? im : (im && (im.url || im.url_default));
+      if (u) out.push({ url: preferHttps(u), type: "image" });
+    }
+    for (const o of data.live_photo || []) {
+      if (!o || typeof o !== "object") continue;
+      const vu = o.video || o.url;
+      if (!vu) continue;
+      if (vu.includes(".mp4") || vu.includes("video")) out.push({ url: preferHttps(vu), type: "video", ext: "mp4", live: true });
+      else out.push({ url: preferHttps(vu), type: "image" });
+    }
+    let videoUrl = data.url || "";
+    let bw = 0, bh = 0, bbr = 0, bestBackup = "";
+    for (const b of data.video_backup || []) {
+      if (!b || !b.url) continue;
+      const br = Number(b.bit_rate ?? b.bitrate ?? 0) || 0;
+      const area = (Number(b.width) || 0) * (Number(b.height) || 0);
+      const score = br > 0 ? br : area;
+      const bestScore = bbr > 0 ? bbr : bw * bh;
+      if (!bestBackup || score > bestScore) { bestBackup = b.url; bbr = br; bw = Number(b.width) || 0; bh = Number(b.height) || 0; }
+    }
+    if (!videoUrl) videoUrl = bestBackup;
+    if (!videoUrl) videoUrl = data.video || "";
+    const type = data.type || "";
+    const imgTypes = ["image", "images", "note", "图文", "normal"];
+    if (videoUrl && (type === "video" || !out.some(x => x.type === "image"))) {
+      const looksImg = /douyinpic\.com|xhscdn\.com/.test(videoUrl) && !/\.mp4|video|play/.test(videoUrl);
+      if (!looksImg && !imgTypes.includes(type)) {
+        out.unshift({ url: preferHttps(videoUrl), type: "video", bitrate: bbr, width: bw, height: bh, ext: "mp4",
+          cover: data.cover ? preferHttps(data.cover) : "", sizeLabel: data.size_label || "",
+          sizeBytes: Number(data.size) || 0, quality: data.quality || "" });
+      }
+    }
+    if (!out.length && videoUrl) {
+      const isImg = ["image", "图文", "normal"].includes(type);
+      out.push({ url: preferHttps(videoUrl), type: isImg ? "image" : "video", bitrate: bbr, width: bw, height: bh,
+        ext: isImg ? undefined : "mp4", cover: data.cover ? preferHttps(data.cover) : "" });
+    }
+    let author = "";
+    if (data.author && typeof data.author === "object") author = data.author.name || data.author.nickname || "";
+    else author = data.author || "";
+    const id = (data.extra && data.extra.aweme_id) || data.aweme_id || data.note_id || data.id || "";
+    const title = data.title || data.desc || "";
+    if (!out.length && !id && !title) return null;
+    return { platform, id: String(id), author, authorName: "", text: title, media: out, source };
+  }
+
+  async function fetchJson(url, timeoutMs = 20000) {
+    const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timer = ctl ? setTimeout(() => ctl.abort(), timeoutMs) : null;
+    try {
+      const r = await fetch(url, { signal: ctl && ctl.signal, credentials: "omit", referrerPolicy: "no-referrer" });
+      const txt = await r.text();
+      let j; try { j = JSON.parse(txt); } catch { throw new Error(`HTTP ${r.status}，返回不是 JSON`); }
+      return j;
+    } catch (e) {
+      if (e && e.name === "AbortError") throw new Error("请求超时");
+      if (e instanceof TypeError) throw new Error("网络请求失败（网络或接口不可用）");
+      throw e;
+    } finally { if (timer) clearTimeout(timer); }
+  }
+
+  async function firstMedia(sources, log, word) {
+    let lastErr = null, emptyResult = null;
+    for (const [name, fn] of sources) {
+      try {
+        log(`尝试 ${name} …`);
+        const r = await fn();
+        if (r && r.media && r.media.length) { log(`${name} 成功：${r.media.length} 个媒体`); return r; }
+        if (r) { emptyResult = r; log(`${name}：该${word}没有可下载的媒体`); }
+        else log(`${name}：未解析到内容`);
+      } catch (e) { lastErr = e; log(`${name} 失败：${e.message || e}`); }
+    }
+    if (emptyResult) throw new ExtractError(`这条${word}里没有视频或图片。`);
+    throw new ExtractError(`解析失败：${lastErr ? lastErr.message : "所有解析接口都没有返回结果"}`);
+  }
+
+  async function extractTwitter(input, log) {
+    const id = parseTweetId(input);
+    if (!id) {
+      if (TCO.test(input)) throw new ExtractError("t.co 短链在网页里无法展开。请在 X 里点「分享 → 复制链接」，粘贴 x.com/…/status/… 形式的链接。");
+      throw new ExtractError("没有识别到推文链接。请粘贴 x.com/用户名/status/数字 形式的链接或推文 ID。");
+    }
+    log(`推文 ID：${id}`);
+    return firstMedia([
+      ["fxtwitter", async () => parseFxTwitter(await fetchJson(`https://api.fxtwitter.com/status/${id}`))],
+      ["vxtwitter", async () => parseVxTwitter(await fetchJson(`https://api.vxtwitter.com/Twitter/status/${id}`))],
+    ], log, "推文");
+  }
+
+  async function extractViaJuhe(url, platform, word, log) {
+    const errs = [];
+    const r = await firstMedia([
+      ["hk0-juhev", async () => {
+        const j = await fetchJson("https://api.hk0.cc/api/juhev?url=" + encodeURIComponent(url), 30000);
+        const f = describeApiFailure(j, "hk0-juhev");
+        if (f) { errs.push(f); throw new Error(f); }
+        return parseHk0Style(j, platform, "hk0-juhev");
+      }],
+    ], log, word).catch(e => {
+      if (errs.length) throw new ExtractError(errs[errs.length - 1] + "。也可能仅登录可见，请换一条公开分享链接重试。");
+      throw e;
+    });
+    return r;
+  }
+
+  function cleanUrl(u) { return u ? u.replace(TRAIL, "") : u; }
+
+  async function extract(input, log = () => {}) {
+    const text = String(input || "").trim();
+    if (!text) throw new ExtractError("请先粘贴链接。");
+    const p = detectPlatform(text);
+    log(`识别平台：${p}`);
+    switch (p) {
+      case "twitter": return extractTwitter(text, log);
+      case "channels": {
+        let url = (text.match(CHANNELS_URL) || [])[0];
+        if (!url) {
+          const bare = text.match(/(?:weixin\.qq\.com\/sph\/[A-Za-z0-9_-]+|channels\.weixin\.qq\.com\/[^\s]+)/i);
+          if (bare) url = "https://" + bare[0];
+        }
+        url = cleanUrl(url);
+        if (!url) throw new ExtractError("链接无效：请粘贴微信视频号分享链接，例如 https://weixin.qq.com/sph/xxxx");
+        const r = await extractViaJuhe(url, "channels", "视频号作品", log);
+        if (!r.id) { const m = url.match(CHANNELS_SPH); if (m) r.id = m[1]; }
+        return r;
+      }
+      case "douyin": {
+        let url = (text.match(DOUYIN_URL) || [])[0];
+        if (!url) { const m = text.match(/v\.douyin\.com\/[A-Za-z0-9_-]+\/?/i); if (m) url = "https://" + m[0]; }
+        url = cleanUrl(url);
+        if (!url) throw new ExtractError("没有识别到抖音链接。");
+        return extractViaJuhe(url, "douyin", "抖音作品", log);
+      }
+      case "xiaohongshu": {
+        let url = (text.match(XHS_URL) || [])[0];
+        if (!url && XHS_ID_ONLY.test(text)) url = "https://www.xiaohongshu.com/explore/" + text;
+        if (!url) { const m = text.match(/xhslink\.(?:com|cn|net)\/[A-Za-z0-9\/]+/i); if (m) url = "https://" + m[0]; }
+        url = cleanUrl(url);
+        if (!url) throw new ExtractError("没有识别到小红书链接。");
+        return extractViaJuhe(url, "xiaohongshu", "小红书笔记", log);
+      }
+      case "weibo":
+        throw new ExtractError("暂不支持微博：微博的解析接口不允许网页直接调用。请用安卓 App 版下载。");
+      case "youtube":
+        throw new ExtractError("暂不支持 YouTube：目前没有可在网页里直接使用的免费解析接口。");
+      default:
+        throw new ExtractError("无法识别链接。支持 X/Twitter、微信视频号、抖音、小红书。");
+    }
+  }
+
+  return { detectPlatform, parseTweetId, origPhoto, parseFxTwitter, parseVxTwitter, parseHk0Style,
+    describeApiFailure, extract, ExtractError };
+})();
+if (typeof module !== "undefined") module.exports = Core;
+</script>
+
+<script>
+"use strict";
+(() => {
+  const $ = s => document.querySelector(s);
+  const inp = $("#inp"), goBtn = $("#goBtn"), statusEl = $("#status"), resultEl = $("#result"), logEl = $("#log");
+  const PLATFORM_NAME = { twitter: "X", channels: "视频号", douyin: "抖音", xiaohongshu: "小红书" };
+  const TYPE_NAME = { video: "视频", gif: "GIF（视频）", image: "图片" };
+
+  function setStatus(msg, cls = "") { statusEl.textContent = msg; statusEl.className = cls; }
+  function log(msg) { logEl.textContent += msg + "\n"; }
+  function el(tag, attrs = {}, ...kids) {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") e.className = v; else if (k === "text") e.textContent = v;
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (v !== undefined && v !== null && v !== false) e.setAttribute(k, v === true ? "" : v);
+    }
+    for (const k of kids) if (k) e.append(k);
+    return e;
+  }
+  const fmtBytes = n => !n ? "" : n < 1024 * 1024 ? (n / 1024).toFixed(0) + " KB" : (n / 1048576).toFixed(n > 100 * 1048576 ? 0 : 1) + " MB";
+
+  function extOf(item, mime) {
+    if (item.ext) return item.ext;
+    if (mime) { const m = mime.split("/")[1]; if (m) return m.replace("jpeg", "jpg").split(";")[0]; }
+    try {
+      const u = new URL(item.url);
+      const f = u.searchParams.get("format"); if (f) return f;
+      const m = u.pathname.match(/\.(jpe?g|png|webp|gif|heic|mp4|mov)$/i); if (m) return m[1].toLowerCase().replace("jpeg", "jpg");
+    } catch {}
+    return item.type === "image" ? "jpg" : "mp4";
+  }
+
+  // ---------- 保存（fetch → blob → 分享面板）----------
+  const fileCache = new Map();
+  async function fetchFile(item, name, onProgress) {
+    const r = await fetch(item.url, { credentials: "omit", referrerPolicy: "no-referrer" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const total = Number(r.headers.get("content-length")) || 0;
+    let blob;
+    if (r.body && r.body.getReader && total) {
+      const reader = r.body.getReader(), chunks = []; let got = 0;
+      for (;;) {
+        const { done, value } = await reader.read(); if (done) break;
+        chunks.push(value); got += value.length; onProgress(got, total);
+      }
+      blob = new Blob(chunks, { type: r.headers.get("content-type") || "" });
+    } else blob = await r.blob();
+    let mime = blob.type || (item.type === "image" ? "image/jpeg" : "video/mp4");
+    if (/octet-stream/.test(mime)) mime = item.type === "image" ? "image/jpeg" : "video/mp4";
+    const fname = `${name}.${extOf(item, mime)}`;
+    return new File([blob], fname, { type: mime });
+  }
+
+  async function shareOrDownload(file, btn, label) {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file] });
+        btn.textContent = "已打开分享面板 ✓";
+        setTimeout(() => (btn.textContent = label), 2500);
+        return;
+      } catch (e) {
+        if (e && e.name === "AbortError") { btn.textContent = label; return; }
+        if (e && e.name === "NotAllowedError") { btn.textContent = "已下载，再点一次保存"; return; }
+        throw e;
+      }
+    }
+    // 不支持分享文件（如桌面浏览器）：直接下载
+    const a = el("a", { href: URL.createObjectURL(file), download: file.name });
+    document.body.append(a); a.click(); a.remove();
+    btn.textContent = "已下载 ✓";
+    setTimeout(() => (btn.textContent = label), 2500);
+  }
+
+  function makeSaveHandler(item, name, hintEl) {
+    const label = item.type === "image" ? "保存图片" : "保存视频";
+    return async function (ev) {
+      const btn = ev.currentTarget;
+      hintEl.textContent = "";
+      const cached = fileCache.get(item.url);
+      if (cached) {
+        try { await shareOrDownload(cached, btn, label); } catch (e) { hintEl.textContent = "分享失败：" + (e.message || e); }
+        return;
+      }
+      btn.disabled = true; btn.textContent = "下载中…";
+      const t0 = Date.now();
+      try {
+        const file = await fetchFile(item, name, (got, total) => {
+          btn.textContent = `下载中 ${Math.floor(got * 100 / total)}%`;
+        });
+        fileCache.set(item.url, file);
+        btn.disabled = false;
+        if (Date.now() - t0 > 4000 && /iPhone|iPad|iPod/.test(navigator.userAgent)) {
+          // iOS 要求分享必须紧跟点击；下载时间较长时让用户再点一次
+          btn.textContent = "已下载，点此保存"; return;
+        }
+        await shareOrDownload(file, btn, label);
+      } catch (e) {
+        btn.disabled = false; btn.textContent = label;
+        hintEl.textContent = "无法在页面内保存（" + (e.message || "网络或跨域限制") + "）。已为你打开原文件：视频点分享按钮选「存储视频」，图片长按选「存储到照片」。";
+        window.open(item.url, "_blank", "noopener");
+      }
+    };
+  }
+
+  async function fillSize(item, infoEl) {
+    if (item.sizeLabel || item.sizeBytes) return;
+    try {
+      const r = await fetch(item.url, { method: "HEAD", credentials: "omit", referrerPolicy: "no-referrer" });
+      const n = Number(r.headers.get("content-length"));
+      if (n > 0) infoEl.append(el("span", { text: fmtBytes(n) }));
+    } catch {}
+  }
+
+  function render(res) {
+    resultEl.innerHTML = "";
+    const who = res.authorName && res.author ? `${res.authorName} @${res.author}` : (res.author ? (res.platform === "twitter" ? "@" : "") + res.author : "");
+    resultEl.append(el("div", { class: "box meta" },
+      el("div", { class: "author" }, document.createTextNode(who || "（未知作者）"),
+        el("span", { class: "src", text: `${PLATFORM_NAME[res.platform] || res.platform} · ${res.source}${res.fromQuote ? " · 来自引用推文" : ""}` })),
+      res.text ? el("div", { class: "text", text: res.text }) : null));
+    res.media.forEach((m, i) => {
+      const name = `${res.platform}_${res.id || Date.now()}_${i + 1}`;
+      let preview;
+      if (m.type === "image") preview = el("img", { class: "preview", src: m.url, alt: "图片", loading: "lazy", referrerpolicy: "no-referrer" });
+      else preview = el("video", { class: "preview", src: m.url, controls: true, playsinline: true, "webkit-playsinline": true,
+        preload: "metadata", poster: m.cover || undefined, loop: m.type === "gif" ? true : undefined, muted: m.type === "gif" ? true : undefined });
+      const info = el("div", { class: "info" }, el("span", { text: `${i + 1}. ${TYPE_NAME[m.type] || m.type}${m.live ? "（实况）" : ""}` }));
+      if (m.width && m.height) info.append(el("span", { text: `${m.width}×${m.height}` }));
+      if (m.bitrate) info.append(el("span", { text: `${Math.round(m.bitrate / 1000)} kbps` }));
+      if (m.duration) info.append(el("span", { text: `${Math.round(m.duration)} 秒` }));
+      if (m.quality) info.append(el("span", { text: m.quality }));
+      if (m.sizeLabel) info.append(el("span", { text: m.sizeLabel }));
+      else if (m.sizeBytes) info.append(el("span", { text: fmtBytes(m.sizeBytes) }));
+      const hint = el("div", { class: "hint" });
+      const label = m.type === "image" ? "保存图片" : "保存视频";
+      resultEl.append(el("div", { class: "box card" }, preview, info,
+        el("div", { class: "row" },
+          el("a", { class: "btn ghost", href: m.url, target: "_blank", rel: "noopener noreferrer", text: "打开原文件" }),
+          el("button", { class: "save", type: "button", text: label, onclick: makeSaveHandler(m, name, hint) })),
+        hint));
+      fillSize(m, info);
+    });
+  }
+
+  let busy = false;
+  async function run() {
+    if (busy) return;
+    const text = inp.value.trim();
+    if (!text) { setStatus("请先粘贴链接。", "err"); return; }
+    busy = true; goBtn.disabled = true; goBtn.textContent = "解析中…";
+    resultEl.innerHTML = ""; logEl.textContent = "";
+    setStatus("正在解析…");
+    try {
+      const res = await Core.extract(text, log);
+      setStatus(`解析成功：共 ${res.media.length} 个媒体。点「保存」后在分享面板选「存储视频 / 存储图像」。`, "ok");
+      render(res);
+    } catch (e) {
+      setStatus(e.message || String(e), "err");
+    } finally { busy = false; goBtn.disabled = false; goBtn.textContent = "解析"; }
+  }
+
+  goBtn.addEventListener("click", run);
+  inp.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); run(); } });
+  $("#clearBtn").addEventListener("click", () => { inp.value = ""; resultEl.innerHTML = ""; setStatus(""); inp.focus(); });
+  $("#pasteBtn").addEventListener("click", async () => {
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.readText) throw new Error("unsupported");
+      const t = await navigator.clipboard.readText();
+      if (!t) { setStatus("剪贴板是空的。", "err"); return; }
+      inp.value = t.trim(); run();
+    } catch {
+      inp.focus();
+      setStatus("无法直接读取剪贴板：请长按输入框，选「粘贴」，再点「解析」。", "err");
+    }
+  });
+
+  const q = new URLSearchParams(location.search).get("url") || new URLSearchParams(location.hash.slice(1)).get("url");
+  if (q) { inp.value = q; run(); }
+})();
+</script>
+</body>
+</html>
